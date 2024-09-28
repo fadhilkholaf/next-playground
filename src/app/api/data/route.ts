@@ -13,7 +13,7 @@ export const GET = async () => {
 export const POST = async (req: NextRequest) => {
   const data = await req.json();
 
-  const response = await createData({ data });
+  // const response = await createData({ data });
 
-  return Response.json(response);
+  // return Response.json(response);
 };
