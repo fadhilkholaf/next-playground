@@ -10,5 +10,5 @@ datasource db {
 
 model Data {
   id   String @id @default(uuid())
-  data String
+  data Json
 }

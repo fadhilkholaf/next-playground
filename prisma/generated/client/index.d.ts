@@ -855,12 +855,10 @@ export namespace Prisma {
 
   export type DataMinAggregateOutputType = {
     id: string | null
-    data: string | null
   }
 
   export type DataMaxAggregateOutputType = {
     id: string | null
-    data: string | null
   }
 
   export type DataCountAggregateOutputType = {
@@ -872,12 +870,10 @@ export namespace Prisma {
 
   export type DataMinAggregateInputType = {
     id?: true
-    data?: true
   }
 
   export type DataMaxAggregateInputType = {
     id?: true
-    data?: true
   }
 
   export type DataCountAggregateInputType = {
@@ -960,7 +956,7 @@ export namespace Prisma {
 
   export type DataGroupByOutputType = {
     id: string
-    data: string
+    data: JsonValue
     _count: DataCountAggregateOutputType | null
     _min: DataMinAggregateOutputType | null
     _max: DataMaxAggregateOutputType | null
@@ -1001,7 +997,7 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      data: string
+      data: Prisma.JsonValue
     }, ExtArgs["result"]["data"]>
     composites: {}
   }
@@ -1396,7 +1392,7 @@ export namespace Prisma {
    */ 
   interface DataFieldRefs {
     readonly id: FieldRef<"Data", 'String'>
-    readonly data: FieldRef<"Data", 'String'>
+    readonly data: FieldRef<"Data", 'Json'>
   }
     
 
@@ -1715,12 +1711,28 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -1739,6 +1751,13 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
 
 
@@ -1764,7 +1783,7 @@ export namespace Prisma {
     OR?: DataWhereInput[]
     NOT?: DataWhereInput | DataWhereInput[]
     id?: StringFilter<"Data"> | string
-    data?: StringFilter<"Data"> | string
+    data?: JsonFilter<"Data">
   }
 
   export type DataOrderByWithRelationInput = {
@@ -1777,7 +1796,7 @@ export namespace Prisma {
     AND?: DataWhereInput | DataWhereInput[]
     OR?: DataWhereInput[]
     NOT?: DataWhereInput | DataWhereInput[]
-    data?: StringFilter<"Data"> | string
+    data?: JsonFilter<"Data">
   }, "id">
 
   export type DataOrderByWithAggregationInput = {
@@ -1793,42 +1812,42 @@ export namespace Prisma {
     OR?: DataScalarWhereWithAggregatesInput[]
     NOT?: DataScalarWhereWithAggregatesInput | DataScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Data"> | string
-    data?: StringWithAggregatesFilter<"Data"> | string
+    data?: JsonWithAggregatesFilter<"Data">
   }
 
   export type DataCreateInput = {
     id?: string
-    data: string
+    data: JsonNullValueInput | InputJsonValue
   }
 
   export type DataUncheckedCreateInput = {
     id?: string
-    data: string
+    data: JsonNullValueInput | InputJsonValue
   }
 
   export type DataUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type DataUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type DataCreateManyInput = {
     id?: string
-    data: string
+    data: JsonNullValueInput | InputJsonValue
   }
 
   export type DataUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type DataUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    data?: StringFieldUpdateOperationsInput | string
+    data?: JsonNullValueInput | InputJsonValue
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -1845,6 +1864,28 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type DataCountOrderByAggregateInput = {
     id?: SortOrder
@@ -1853,12 +1894,10 @@ export namespace Prisma {
 
   export type DataMaxOrderByAggregateInput = {
     id?: SortOrder
-    data?: SortOrder
   }
 
   export type DataMinOrderByAggregateInput = {
     id?: SortOrder
-    data?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -1877,6 +1916,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -1923,6 +1987,28 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
 
