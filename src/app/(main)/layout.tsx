@@ -12,20 +12,20 @@ export default function MainLayout({
 }>) {
   const { globalState } = useGlobalState();
 
-  useEffect(() => {
-    const lenis = new Lenis();
+  // useEffect(() => {
+  //   const lenis = new Lenis();
 
-    const raf = (n: number) => {
-      lenis.raf(n);
-      requestAnimationFrame(raf);
-    };
+  //   const raf = (n: number) => {
+  //     lenis.raf(n);
+  //     requestAnimationFrame(raf);
+  //   };
 
-    requestAnimationFrame(raf);
-  }, []);
+  //   requestAnimationFrame(raf);
+  // }, []);
 
   return (
     <>
-      <nav className="flex gap-4 z-50 justify-center w-full fixed">
+      <nav className="flex gap-4 z-50 justify-center w-full fixed overflow-x-scroll">
         <Link className="mix-blend-exclusion bg-white" href={"/"}>
           Home
         </Link>
@@ -41,8 +41,14 @@ export default function MainLayout({
         <Link className="mix-blend-exclusion bg-white" href={"/bedroom"}>
           Bed Room
         </Link>
+        <Link className="mix-blend-exclusion bg-white" href={"/spotify"}>
+          Spotify
+        </Link>
+        <Link className="mix-blend-exclusion bg-white" href={"/touch"}>
+          Touch
+        </Link>
       </nav>
-      <h2 className="fixed z-[999] bg-white mix-blend-exclusion">
+      <h2 className="fixed z-[999] bottom-0 bg-white text-black">
         Global State : {globalState}
       </h2>
       {children}

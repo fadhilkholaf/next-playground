@@ -114,7 +114,7 @@ export default function Room(props: JSX.IntrinsicElements["group"]) {
     camera.lookAt(
       new THREE.Vector3(
         lookAtX.get() + -mouseX.get() * 2,
-        lookAtY.get() + scrollTransformValue.get() + -mouseY.get() * 2,
+        lookAtY.get() + scrollTransformValue.get() * 0.5 + -mouseY.get() * 2,
         lookAtZ.get() + -mouseX.get() * 2
       )
     );
