@@ -5,7 +5,7 @@ import {
   TopArtists,
   TopTracks,
 } from "@/types/spotify-response";
-import { OrbitControls, OrthographicCamera } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
 

@@ -47,6 +47,12 @@ export default function MainLayout({
         <Link className="mix-blend-exclusion bg-white" href={"/touch"}>
           Touch
         </Link>
+        <Link className="mix-blend-exclusion bg-white" href={"/ably"}>
+          Ably
+        </Link>
+        <Link className="mix-blend-exclusion bg-white" href={"/planet"}>
+          Planet
+        </Link>
       </nav>
       <h2 className="fixed z-[999] bottom-0 bg-white text-black">
         Global State : {globalState}

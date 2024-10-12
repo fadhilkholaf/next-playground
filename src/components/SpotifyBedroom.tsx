@@ -120,8 +120,12 @@ export default function SpotifyBedroom({
   const tracksItems = topTracks.items;
   const artistsItems = topArtists.items;
 
-  const { track1 } = useTexture({
+  const { track1, track2, track3, track4, track5 } = useTexture({
     track1: tracksItems ? tracksItems[0].album.images[0].url : imagePlaceholder,
+    track2: tracksItems ? tracksItems[1].album.images[0].url : imagePlaceholder,
+    track3: tracksItems ? tracksItems[2].album.images[0].url : imagePlaceholder,
+    track4: tracksItems ? tracksItems[3].album.images[0].url : imagePlaceholder,
+    track5: tracksItems ? tracksItems[4].album.images[0].url : imagePlaceholder,
   });
 
   const { artist1, artist2, artist3, artist4, artist5 } = useTexture({
@@ -304,7 +308,10 @@ export default function SpotifyBedroom({
         scale={0.699}
       >
         <mesh geometry={nodes.Plane001.geometry} material={materials.base} />
-        <mesh geometry={nodes.Plane001_1.geometry} material={materials.light} />
+        <mesh geometry={nodes.Plane001_1.geometry}>
+          {(track2.flipY = false)}
+          <meshStandardMaterial map={track2} />
+        </mesh>
       </group>
       <group
         position={[-4.129, 7.355, -6.944]}
@@ -312,7 +319,10 @@ export default function SpotifyBedroom({
         scale={0.699}
       >
         <mesh geometry={nodes.Plane003.geometry} material={materials.base} />
-        <mesh geometry={nodes.Plane003_1.geometry} material={materials.light} />
+        <mesh geometry={nodes.Plane003_1.geometry}>
+          {(track3.flipY = false)}
+          <meshStandardMaterial map={track3} />
+        </mesh>
       </group>
       <group
         position={[-4.129, 7.355, -8.635]}
@@ -320,7 +330,13 @@ export default function SpotifyBedroom({
         scale={0.699}
       >
         <mesh geometry={nodes.Plane004.geometry} material={materials.base} />
-        <mesh geometry={nodes.Plane004_1.geometry} material={materials.light} />
+        <mesh geometry={nodes.Plane004_1.geometry}>
+          {(track4.flipY = false)}
+          <meshStandardMaterial map={track4} />
+        </mesh>
+        <Html center rotation={[Math.PI / 2, 0, -Math.PI / 2]}>
+          <p className="bg-red-50 text-nowrap">JKT 48</p>
+        </Html>
       </group>
       <group
         position={[-4.129, 7.355, -10.333]}
@@ -328,7 +344,10 @@ export default function SpotifyBedroom({
         scale={0.699}
       >
         <mesh geometry={nodes.Plane005.geometry} material={materials.base} />
-        <mesh geometry={nodes.Plane005_1.geometry} material={materials.light} />
+        <mesh geometry={nodes.Plane005_1.geometry}>
+          {(track5.flipY = false)}
+          <meshStandardMaterial map={track5} />
+        </mesh>
       </group>
 
       {/* artists */}
